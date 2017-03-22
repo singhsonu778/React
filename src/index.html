@@ -12,37 +12,62 @@
 
 	<script type="text/jsx">
     
-        var Checkbox = React.createClass({
+        var Movie = React.createClass({
 			
 			getInitialState: function() {
-				return {checked: true}
+				return {editable: false};
 			},
 
-			handleCheck: function() {
-				this.setState({checked: !this.state.checked});
+			edit: function() {
+				this.setState({editable: true});
 			},
 
-			getMessage: function() {
-				var message;
-				if(this.state.checked) {
-					message = 'checked';
-				} else {
-					message = 'unchecked';
-				}
-				return message;
+			remove: function() {
+				//this implementation is incomplete
+				alert('remove');
 			},
 
-            render: function() {         	
-			    return (
+			save: function() {
+				//this implementation is incomplete
+				alert(this.refs.movieName.value);
+				this.setState({editable: false});
+			},
+
+			displayInfo: function() {
+				return (
 						<div>
-                        	<input type='checkbox' onChange={this.handleCheck} defaultChecked={this.state.checked} />
-							<h2>Checkbox is {this.getMessage()}</h2>
+                        	<h1>{this.props.children}</h1>
+							<button onClick={this.edit}>Edit</button>
+							<button onClick={this.remove}>Remove</button>
 						</div>
-                );
+				);
+			},
+
+			editInfo: function() {
+				return (
+						<div>
+                        	<textarea ref='movieName' defaultValue={this.props.children}></textarea><br/>
+							<button onClick={this.save}>Save</button>
+						</div>
+				);
+			},
+
+            render: function() {
+                if(this.state.editable) {
+					return this.editInfo();
+				} else {
+					return this.displayInfo();
+				}
             }
         });
 
-        ReactDOM.render(<Checkbox/>, document.getElementById('container'));
+        ReactDOM.render(
+						<div>
+							<Movie>Dangal</Movie>
+							<Movie>Hera Pheri</Movie>
+						</div>,
+						document.getElementById('container')
+		);
 
     </script>
 

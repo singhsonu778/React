@@ -4,17 +4,25 @@
 	<title>React Tutorials</title>
 	<script src="../third-party/react.js"></script>
 	<script src="../third-party/react-dom.js"></script>
+	<script src="../third-party/babel.js"></script>
 </head>
 <body>
 
 	<div id="container"></div>
 
-	<script>
-		ReactDOM.render(
-			React.createElement('h1', null, 'Hello World!!!'),
-			document.getElementById('container')
-		);
-	</script>
+	<script type="text/jsx">
+    
+        var HelloWorld = React.createClass({
+            render: function() {
+                return (
+                        <h2>Hello World!!!</h2>
+                );
+            }
+        });
+
+        ReactDOM.render(<HelloWorld/>, document.getElementById('container'));
+
+    </script>
 
 </body>
 </html>

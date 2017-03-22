@@ -12,24 +12,37 @@
 
 	<script type="text/jsx">
     
-        var Movie = React.createClass({
-            render: function() {
-                return (
+        var Checkbox = React.createClass({
+			
+			getInitialState: function() {
+				return {checked: true}
+			},
+
+			handleCheck: function() {
+				this.setState({checked: !this.state.checked});
+			},
+
+			getMessage: function() {
+				var message;
+				if(this.state.checked) {
+					message = 'checked';
+				} else {
+					message = 'unchecked';
+				}
+				return message;
+			},
+
+            render: function() {         	
+			    return (
 						<div>
-                        	<h1>{this.props.title}</h1>
-							<h2>{this.props.genre}</h2>
+                        	<input type='checkbox' onChange={this.handleCheck} defaultChecked={this.state.checked} />
+							<h2>Checkbox is {this.getMessage()}</h2>
 						</div>
                 );
             }
         });
 
-        ReactDOM.render(
-						<div>
-							<Movie title='Dangal' genre='Action'/> 
-							<Movie title='Hera Pheri' genre='Comedy'/>
-						</div>,
-						document.getElementById('container')
-		);
+        ReactDOM.render(<Checkbox/>, document.getElementById('container'));
 
     </script>
 

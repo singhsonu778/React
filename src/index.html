@@ -11,8 +11,25 @@
 	<div id="container"></div>
 
 	<script type="text/jsx">
+    
+        var Movie = React.createClass({
+            render: function() {
+                return (
+						<div>
+                        	<h1>{this.props.title}</h1>
+							<h2>{this.props.genre}</h2>
+						</div>
+                );
+            }
+        });
 
-        ReactDOM.render(<h2>Hello World!!!</h2>, document.getElementById('container'));
+        ReactDOM.render(
+						<div>
+							<Movie title='Dangal' genre='Action'/> 
+							<Movie title='Hera Pheri' genre='Comedy'/>
+						</div>,
+						document.getElementById('container')
+		);
 
     </script>
 

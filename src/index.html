@@ -67,6 +67,12 @@
 				}
 			},
 
+			addMovie: function(movieName) {
+				var movieArray = this.state.movies;
+				movieArray.push(movieName);
+				this.setState({movies: movieArray});
+			},
+
 			removeMovie: function(i) {
 				var movieArray = this.state.movies;
 				movieArray.splice(i, 1);
@@ -86,7 +92,10 @@
 			render: function() {
 				return (
 					<div>
-						{this.state.movies.map(this.renderMovie)}
+						<button onClick={this.addMovie.bind(null, 'Enter movie name here')}>Add New Movie</button>
+						<div>
+							{this.state.movies.map(this.renderMovie)}
+						</div>
 					</div>
 				);
 			}

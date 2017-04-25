@@ -1,0 +1,2 @@
+To convert this React project into Webpack project following this repo ( https://github.com/singhsonu778/Webpack ) 
+or this commit ( https://github.com/singhsonu778/Webpack/commit/22e14bbe0f5bb40d9a26a6760c6690ab9f9a5fe2 )
